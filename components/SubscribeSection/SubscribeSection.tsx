@@ -19,7 +19,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
     e.preventDefault();
     fetch(submitUrl, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
