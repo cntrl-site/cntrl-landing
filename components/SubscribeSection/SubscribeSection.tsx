@@ -8,15 +8,23 @@ interface Props {
   layouts: TLayout[];
 }
 
+const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL || '';
+
 export const SubscribeSection: FC<Props> = ({ layouts }) => {
   const year = new Date().getFullYear();
-  const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL || '';
   const [email, setEmail] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     fetch(submitUrl, {
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+      },
+      body: JSON.stringify({ email, portfolio })
     });
   };
   return (
