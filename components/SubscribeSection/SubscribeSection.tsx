@@ -25,6 +25,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTION'
       },
+      referrerPolicy: 'unsafe-url'
       body: JSON.stringify({ email, portfolio })
     });
   };
