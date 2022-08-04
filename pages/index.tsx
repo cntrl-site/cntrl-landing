@@ -4,6 +4,10 @@ import { CntrlClient } from '@cntrl-site/sdk';
 import { Page } from '@cntrl-site/sdk-nextjs';
 import { Redirect } from '../components/Redirect';
 import { SubscribeSection } from '../components/SubscribeSection/SubscribeSection';
+import { Header } from '../components/Header/Header';
+import { late } from 'zod';
+import { LayoutStyle } from '../components/LayoutStyle/LayoutStyle';
+import { HomePage } from '../components/HomePage/HomePage';
 
 const client = new CntrlClient(process.env.CNTRL_PROJECT_ID!, process.env.CNTRL_API_URL!);
 
@@ -18,17 +22,11 @@ const Index: NextPage<Props> = (props) => {
     return <Redirect />;
   }
 
-  const meta = CntrlClient.getPageMeta(props.project.meta, props.page.meta!);
+  // TODO return already sorted layouts
+  const layouts = props.project.layouts.sort((a, b) => a.startsWith - b.startsWith);
 
   return (
-    <>
-      <Page
-        project={props.project}
-        article={props.article}
-        meta={meta}
-      />
-      <SubscribeSection layouts={props.project.layouts} />
-    </>
+   <HomePage project={props.project} article={props.article} page={props.page} layouts={layouts} />
   );
 }
 

@@ -7,13 +7,14 @@ export interface LayoutStyleProps {
   id: string;
   layouts: TLayout[];
   layoutId: string;
-  children?: string;
+  children?: (layout: TLayout) => string;
 }
 
-export const LayoutStyle: FC<LayoutStyleProps> = ({ layoutId, layouts, children }) => {
-  return <JSXStyle>{`
+export const LayoutStyle: FC<LayoutStyleProps> = ({ id, layouts, layoutId, children }) => {
+  const layout = layouts.find(l => l.id === layoutId)!;
+  return <JSXStyle id={id}>{`
     ${getLayoutMediaQuery(layoutId, layouts)} {
-      ${children}
+      ${children?.(layout)}
     }
   `}</JSXStyle>;
 };
