@@ -3,6 +3,7 @@ import logo from '../../public/cntrl-img.svg';
 import { TLayout } from '@cntrl-site/core';
 import { LayoutStyle } from '../LayoutStyle/LayoutStyle';
 import { getVw } from '../HomePage/HomePage';
+import logoIcon from '../../public/icon-large.png';
 
 interface Props {
   layouts: TLayout[];
@@ -30,7 +31,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
   };
   return (
     <>
-      <div className="subscribe">
+      <div className="subscribe" id="subscribe">
         <div className="subscribe-hero">
           <img src={logo.src} alt="CNTRL Logo" className="hero" />
           <div className="rights">
@@ -41,12 +42,29 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           <div className="subscribe-text">
             We’re looking for <span className="strikethrough">investor</span> creative guinea pigs to try our Alpha release.
           </div>
-          <form onSubmit={onSubmit}>
-            <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="text" name="portfolio" value={portfolio} onChange={(e) => setPortfolio(e.target.value)} />
-            <button type="submit">Send</button>
+          <form onSubmit={onSubmit} className="form">
+            <input
+              type="text"
+              name="email"
+              value="Your e-mail"
+              onChange={(e) => setEmail(e.target.value)}
+              className="input"
+            />
+            <input
+              type="text"
+              name="portfolio"
+              value="Website / Portfolio"
+              onChange={(e) => setPortfolio(e.target.value)}
+              className="input"
+            />
+            <button type="submit" className="submit">Send</button>
           </form>
-          <a href="mailto:hi@cntrl.site" className="email">hi@cntrl.site</a>
+          <div className="form-bottom-wrapper">
+            <a href="mailto:hi@cntrl.site" className="email">hi@cntrl.site</a>
+            <div className="form-bottom-text">
+              Build in <img src={logoIcon.src} className="icon" />
+            </div>
+          </div>
         </div>
       </div>
       <LayoutStyle
@@ -73,6 +91,10 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           margin-top: ${getVw(53, exemplary)};
           margin-left: ${getVw(56, exemplary)}
         }
+        .icon {
+          width: ${getVw(24, exemplary)};
+          margin-left: ${getVw(11, exemplary)};
+        }
         .rights {
           margin-left: ${getVw(56, exemplary)};
           margin-bottom: ${getVw(36, exemplary)}
@@ -84,8 +106,25 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           margin-right: ${getVw(159, exemplary)};
           margin-left: ${getVw(40, exemplary)}
         }
+        .form {
+          margin-top: ${getVw(81, exemplary)};
+          margin-left: ${getVw(40, exemplary)};
+          margin-right: ${getVw(159, exemplary)};
+          font-size: ${getVw(32, exemplary)};
+          line-height: ${getVw(40, exemplary)};
+        }
+        .submit {
+          font-size: ${getVw(32, exemplary)};
+          line-height: ${getVw(40, exemplary)};
+        }
         .email {
           margin-left: ${getVw(40, exemplary)};
+        }
+        .form-bottom-wrapper {
+          margin-top: ${getVw(210, exemplary)};
+        }
+        .form-bottom-text {
+          margin-right: ${getVw(56, exemplary)};
         }
       `}</LayoutStyle>
       <style jsx>{`
@@ -106,6 +145,28 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+        }
+        .form {
+          display: flex;
+          flex-direction: column;
+          color: #1EE65B;
+        }
+        .form-bottom-wrapper {
+          display: flex;
+          justify-content: space-between;
+        }
+        .form-bottom-text {
+          color: #FFFFFF;
+        }
+        input {
+          all: unset;
+        }
+        button {
+          background-color: unset;
+          border: unset;
+          padding: unset;
+          display: inline-flex;
+          color: #2D2D2D;
         }
       `}</style>
     </>

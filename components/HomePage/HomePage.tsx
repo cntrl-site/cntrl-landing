@@ -16,10 +16,18 @@ interface Props {
 export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
   const meta = CntrlClient.getPageMeta(project.meta, page?.meta!);
 
+  const scrollTo = (elId: string) => {
+    const el = document.querySelector(`#${elId}`);
+    if (!el) return;
+    el?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <>
       <Header layouts={layouts}>
-        <a className="button">Request an invite</a>
+        <a className="button" onClick={() => scrollTo('subscribe')}>Request an invite</a>
       </Header>
       <Page
         project={project}
@@ -59,6 +67,7 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
           font-family: 'AeonikPro';
           font-weight: 700;
           border: 2px solid #000;
+          cursor: pointer;
           //padding: 3px 40px 5px 40px;
         }
       `}</style>
