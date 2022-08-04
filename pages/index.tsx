@@ -3,6 +3,7 @@ import { TArticle, TProject, TPage } from '@cntrl-site/core';
 import { CntrlClient } from '@cntrl-site/sdk';
 import { Page } from '@cntrl-site/sdk-nextjs';
 import { Redirect } from '../components/Redirect';
+import { SubscribeSection } from '../components/SubscribeSection/SubscribeSection';
 
 const client = new CntrlClient(process.env.CNTRL_PROJECT_ID!, process.env.CNTRL_API_URL!);
 
@@ -20,11 +21,14 @@ const Index: NextPage<Props> = (props) => {
   const meta = CntrlClient.getPageMeta(props.project.meta, props.page.meta!);
 
   return (
-    <Page
-      project={props.project}
-      article={props.article}
-      meta={meta}
-    />
+    <>
+      <Page
+        project={props.project}
+        article={props.article}
+        meta={meta}
+      />
+      <SubscribeSection layouts={props.project.layouts} />
+    </>
   );
 }
 
