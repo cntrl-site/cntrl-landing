@@ -19,11 +19,12 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
     e.preventDefault();
     fetch(submitUrl, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTION'
       },
       body: JSON.stringify({ email, portfolio })
     });
