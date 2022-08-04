@@ -24,8 +24,9 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTION'
       },
+      referrerPolicy: 'unsafe-url'
       body: JSON.stringify({ email, portfolio })
     });
   };
