@@ -9,7 +9,7 @@ mailchimp.setConfig({
 export const handler: Handler = async (event, context) => {
   const { email = 'test@google.com' } = event.queryStringParameters!;
 
-  const response = await mailchimp.lists.addListMember('1130385', { email_address: email });
+  const response = await mailchimp.lists.getListMember('1130385', '515235917');
 
   return {
     statusCode: 200,
