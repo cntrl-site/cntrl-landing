@@ -7,13 +7,13 @@ mailchimp.setConfig({
 });
 
 export const handler: Handler = async (event, context) => {
-  const { email = 'stranger' } = event.queryStringParameters!;
+  const { email = 'test@google.com' } = event.queryStringParameters!;
 
   return {
     statusCode: 200,
     body: JSON.stringify({
       // @ts-ignore
-      message: mailchimp.lists.getAllLists(),
+      message: mailchimp.lists.addListMember(1130385, { email_address: email }),
     }),
   };
 }
