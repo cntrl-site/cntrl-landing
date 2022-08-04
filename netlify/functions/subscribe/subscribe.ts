@@ -1,10 +1,6 @@
-import { Handler } from '@netlify/functions'
-// mailchimp.setConfig({
-//   apiKey: '0f878ada0fad58181dabfbe87a6b309f-us13',
-//   server: 'us13',
-// });
-
+import { Handler } from '@netlify/functions';
 import Airtable from 'airtable';
+
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY! }).base(process.env.AIRTABLE_BASE!);
 
 export const handler: Handler = async (event, context) => {
@@ -26,6 +22,9 @@ export const handler: Handler = async (event, context) => {
 
   return {
     statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
     body: JSON.stringify({
       message: 'success',
     }),

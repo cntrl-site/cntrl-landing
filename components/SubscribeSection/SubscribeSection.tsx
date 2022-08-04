@@ -1,9 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, FormEventHandler, useState } from 'react';
 import logo from '../../public/cntrl-img.svg';
 import { TLayout } from '@cntrl-site/core';
 import { LayoutStyle } from '../LayoutStyle/LayoutStyle';
 import { getVw } from '../HomePage/HomePage';
-import { date } from 'zod';
 
 interface Props {
   layouts: TLayout[];
@@ -11,6 +10,15 @@ interface Props {
 
 export const SubscribeSection: FC<Props> = ({ layouts }) => {
   const year = new Date().getFullYear();
+  const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL || '';
+  const [email, setEmail] = useState('');
+  const [portfolio, setPortfolio] = useState('');
+  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    fetch(submitUrl, {
+      method: 'POST'
+    });
+  };
   return (
     <>
       <div className="subscribe">
@@ -24,11 +32,12 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           <div className="subscribe-text">
             We’re looking for <span className="strikethrough">investor</span> creative guinea pigs to try our Alpha release.
           </div>
-          <form >
-
+          <form onSubmit={onSubmit}>
+            <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="text" name="portfolio" value={portfolio} onChange={(e) => setPortfolio(e.target.value)} />
+            <button type="submit">Send</button>
           </form>
           <a href="mailto:hi@cntrl.site" className="email">hi@cntrl.site</a>
-
         </div>
       </div>
       <LayoutStyle
