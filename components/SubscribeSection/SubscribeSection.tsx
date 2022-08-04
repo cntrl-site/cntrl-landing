@@ -8,7 +8,8 @@ interface Props {
   layouts: TLayout[];
 }
 
-const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL || '';
+const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL ||
+  'https://glistening-froyo-032078.netlify.app/.netlify/functions/subscribe';
 
 export const SubscribeSection: FC<Props> = ({ layouts }) => {
   const year = new Date().getFullYear();
