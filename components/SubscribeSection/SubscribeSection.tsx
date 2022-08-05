@@ -9,7 +9,7 @@ interface Props {
   layouts: TLayout[];
 }
 
-const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL ||
+const submitUrl =
   'https://functions.cntrl.site/.netlify/functions/subscribe';
 
 export const SubscribeSection: FC<Props> = ({ layouts }) => {
