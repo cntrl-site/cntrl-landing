@@ -36,13 +36,33 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
       />
       <SubscribeSection layouts={layouts} />
       <LayoutStyle
+        id={`homePage-${layouts[0].id}`}
+        layouts={layouts}
+        layoutId={layouts[0].id}
+      >{({ exemplary }) => `
+        .button {
+          font-size: ${getVw(18, exemplary)};
+          // border-radius: ${getVw(19, exemplary)};
+          // padding-left: ${getVw(40.5, exemplary)};
+          // padding-right: ${getVw(40.5, exemplary)};
+          // padding-top: ${getVw(5, exemplary)}; 
+          // padding-bottom: ${getVw(5, exemplary)};
+          // height: ${getVw(38, exemplary)}
+        }
+      `}</LayoutStyle>
+      <LayoutStyle
         id={`homePage-${layouts[1].id}`}
         layouts={layouts}
         layoutId={layouts[1].id}
       >{({ exemplary }) => `
         .button {
           font-size: ${getVw(18, exemplary)};
-          border-radius: ${getVw(19, exemplary)};
+          // border-radius: ${getVw(19, exemplary)};
+          // padding-left: ${getVw(40.5, exemplary)};
+          // padding-right: ${getVw(40.5, exemplary)};
+          // padding-top: ${getVw(5, exemplary)}; 
+          // padding-bottom: ${getVw(5, exemplary)};
+          // height: ${getVw(38, exemplary)}
         }
       `}</LayoutStyle>
       <LayoutStyle
@@ -52,23 +72,22 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
       >{({ exemplary }) => `
         .button {
           font-size: ${getVw(18, exemplary)};
-          border-radius: ${getVw(19, exemplary)};
-          padding-left: ${getVw(40.5, exemplary)};
-          padding-right: ${getVw(40.5, exemplary)};
-          padding-top: ${getVw(5, exemplary)}; 
-          padding-bottom: ${getVw(5, exemplary)};
-          height: ${getVw(38, exemplary)}
+          // border-radius: ${getVw(19, exemplary)};
+          // padding-left: ${getVw(40.5, exemplary)};
+          // padding-right: ${getVw(40.5, exemplary)};
+          // padding-top: ${getVw(5, exemplary)}; 
+          // padding-bottom: ${getVw(5, exemplary)};
+          // height: ${getVw(38, exemplary)}
         }
       `}</LayoutStyle>
       <style jsx>{`
         .button {
           display: inline-block;
           box-sizing: border-box;
-          font-family: 'AeonikPro';
-          font-weight: 700;
-          border: 2px solid #000;
+          font-family: 'input-mono-compressed';
+          font-weight: 500;
+          letter-spacing: -1px;
           cursor: pointer;
-          //padding: 3px 40px 5px 40px;
         }
       `}</style>
     </>

@@ -23,11 +23,16 @@ export const Header: FC<Props> = ({ layouts, children }) => {
         layouts={layouts}
         layoutId={layouts[0].id}
       >{({ exemplary }) => `
+        .header {
+          margin-top: ${getVw(20, exemplary)};
+        }
         .button-wrapper {
-          border-radius: ${getVw(19, exemplary)}
+          margin-right: ${getVw(16, exemplary)};
+          margin-bottom: ${getVw(-5, exemplary)};
         }
         .logo {
-          height: ${getVw(37, exemplary)}
+          height: ${getVw(20, exemplary)};
+          margin-left: ${getVw(16, exemplary)};
         }
       `}</LayoutStyle>
 
@@ -36,12 +41,16 @@ export const Header: FC<Props> = ({ layouts, children }) => {
         layouts={layouts}
         layoutId={layouts[1].id}
       >{({ exemplary }) => `
+        .header {
+          margin-top: ${getVw(20, exemplary)};
+        }
         .button-wrapper {
-          margin-right: ${getVw(56, exemplary)};
+          margin-right: ${getVw(40, exemplary)};
+          margin-bottom: ${getVw(-5, exemplary)};
         }
         .logo {
-          height: ${getVw(37, exemplary)};
-          margin-left: ${getVw(56, exemplary)};
+          height: ${getVw(20, exemplary)};
+          margin-left: ${getVw(40, exemplary)};
         }
       `}</LayoutStyle>
 
@@ -51,14 +60,15 @@ export const Header: FC<Props> = ({ layouts, children }) => {
         layoutId={layouts[2].id}
       >{({ exemplary }) => `
         .header {
-          margin-top: ${getVw(61, exemplary)};
+          margin-top: ${getVw(20, exemplary)};
         }
         .button-wrapper {
-          margin-right: ${getVw(56, exemplary)};
+          margin-right: ${getVw(40, exemplary)};
+          margin-bottom: ${getVw(-5, exemplary)};
         }
         .logo {
-          height: ${getVw(37, exemplary)};
-          margin-left: ${getVw(56, exemplary)};
+          height: ${getVw(20, exemplary)};
+          margin-left: ${getVw(40, exemplary)};
         }
       `}</LayoutStyle>
       <style jsx>{`
@@ -68,6 +78,9 @@ export const Header: FC<Props> = ({ layouts, children }) => {
           display: flex;
           width: 100%;
           justify-content: space-between;
+        }
+        .button-wrapper {
+          align-self: flex-end;
         }
     `}</style>
     </>
