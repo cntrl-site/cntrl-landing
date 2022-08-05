@@ -32,11 +32,13 @@ export const handler: Handler = async (event) => {
       })
     };
   } else {
+    console.log('OPTIONS');
     return {
-      statusCode: 200,
+      statusCode: 204,
       headers: {
-        "Access-Control-Allow-Origin": "https://cntrl.site",
-        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS"
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
       }
     };
   }
