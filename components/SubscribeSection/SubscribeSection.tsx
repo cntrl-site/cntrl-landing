@@ -122,7 +122,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           flex-direction: column-reverse;
           justify-content: space-between;
           position: relative;
-          height: 100vh
+          // height: 100vh
         }
         .subscribe-hero {
           padding-left: ${getVw(16, exemplary)}
@@ -155,7 +155,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         } 
         .form {
           margin-top: ${getVw(180, exemplary)};
-          margin-bottom: ${getVw(20, exemplary)};
+          margin-bottom: ${getVw(112, exemplary)};
           margin-right: ${getVw(14, exemplary)};
           padding-left: ${getVw(16, exemplary)}
         }
@@ -168,6 +168,12 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         .submit {
           font-size: ${getVw(32, exemplary)};
           padding-top: ${getVw(7.5, exemplary)}!important;
+        }
+        .submitted {
+          font-size: ${getVw(32, exemplary)};
+          line-height: ${getVw(40, exemplary)};
+          margin-right: ${getVw(14, exemplary)};
+          margin-left: ${getVw(16, exemplary)};
         }
       `}
       </LayoutStyle>
@@ -177,58 +183,65 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         layoutId={layouts[1].id}
       >{({exemplary}) => `
         .subscribe {
-          flex-direction: column-reverse;
-          justify-content: space-between;
-          position: relative;
-          height: 100vh
+          min-height: ${getVw(800, exemplary)};
         }
+        .subscribe-hero,
         .subscribe-form {
-          padding-right: ${getVw(265, exemplary)}
+          flex: 1 1 50%;
         }
-        .subscribe-hero {
-          padding-left: ${getVw(16, exemplary)}
-        } 
-        .subscribe-text {
-          font-size: ${getVw(48, exemplary)};
-          margin-top: ${getVw(31, exemplary)};
-          padding-left: ${getVw(16, exemplary)}
-        } 
         .hero {
-          width: ${getVw(385, exemplary)};
-        }
-        .rights {
-          margin-bottom: ${getVw(27, exemplary)};
-          margin-top: ${getVw(17, exemplary)}
-        }
-        .email {
-          padding-left: ${getVw(16, exemplary)};
-          bottom: ${getVw(157, exemplary)};
-          position: absolute;
+          width: ${getVw(183, exemplary)};
+          margin-top: ${getVw(53, exemplary)};
+          margin-left: ${getVw(16, exemplary)}
         }
         .icon {
           width: ${getVw(24, exemplary)};
           margin-left: ${getVw(11, exemplary)};
         }
-        .form-bottom-text {
-          bottom: ${getVw(25, exemplary)};
-          right: ${getVw(14, exemplary)};
-          position: absolute;
-        } 
+        .rights {
+          margin-left: ${getVw(16, exemplary)};
+          margin-bottom: ${getVw(36, exemplary)}
+        }
+        .subscribe-text {
+          font-size: ${getVw(40, exemplary)};
+          line-height: ${getVw(50, exemplary)};
+          margin-top: ${getVw(53, exemplary)};
+          margin-right: ${getVw(20, exemplary)};
+          margin-left: ${getVw(20, exemplary)}
+        }
         .form {
-          margin-top: ${getVw(150, exemplary)};
-          margin-right: ${getVw(14, exemplary)};
-          padding-left: ${getVw(16, exemplary)};
-          margin-bottom: ${getVw(20, exemplary)};
+          margin-top: ${getVw(81, exemplary)};
+          margin-left: ${getVw(20, exemplary)};
+          margin-right: ${getVw(20, exemplary)};
+          font-size: ${getVw(32, exemplary)};
+          line-height: ${getVw(40, exemplary)};
+        }
+        .submit {
+          font-size: ${getVw(28, exemplary)};
+          line-height: ${getVw(35, exemplary)};
+          padding-top: ${getVw(7.5, exemplary)}!important;
+        }
+        .email {
+          margin-left: ${getVw(20, exemplary)};
+        }
+        .form-bottom-wrapper {
+          margin-top: ${getVw(210, exemplary)};
+          margin-bottom: ${getVw(36, exemplary)}
+        }
+        .form-bottom-text {
+          margin-right: ${getVw(20, exemplary)};
         }
         .input {
           font-size: ${getVw(32, exemplary)};
-          border-width: ${getVw(1, exemplary)};
           padding-bottom: ${getVw(7.5, exemplary)}!important;
           padding-top: ${getVw(7.5, exemplary)}!important;
+          border-width: ${getVw(2, exemplary)};
         }
-        .submit {
+        .submitted {
           font-size: ${getVw(32, exemplary)};
-          padding-top: ${getVw(7.5, exemplary)}!important;
+          line-height: ${getVw(40, exemplary)};
+          margin-right: ${getVw(20, exemplary)};
+          margin-left: ${getVw(20, exemplary)};
         }
       `}</LayoutStyle>
       <LayoutStyle
@@ -291,6 +304,12 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           padding-top: ${getVw(7.5, exemplary)}!important;
           border-width: ${getVw(2, exemplary)};
         }
+        .submitted {
+          font-size: ${getVw(32, exemplary)};
+          line-height: ${getVw(40, exemplary)};
+          margin-right: ${getVw(159, exemplary)};
+          margin-left: ${getVw(40, exemplary)};
+        }
       `}</LayoutStyle>
       <style jsx>{`
         .subscribe {
@@ -338,6 +357,8 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           color: #838383;
         }
         input {
+          outline: none;
+          border-radius: unset;
           border-top-width: 0; 
           border-left-width: 0; 
           border-right-width: 0;
@@ -346,6 +367,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           background-color: transparent;
           -webkit-appearance: none;
           color: #fff;
+          padding-left: 0;
         }
         input:focus::placeholder {
           color: #2d2d2d;
