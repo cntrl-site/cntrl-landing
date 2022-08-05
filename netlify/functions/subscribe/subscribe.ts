@@ -3,8 +3,7 @@ import Airtable from 'airtable';
 
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY! }).base(process.env.AIRTABLE_BASE!);
 
-export const handler: Handler = async (event, context) => {
-  console.log(event.body);
+export const handler: Handler = async (event) => {
   const body = JSON.parse(event.body!);
 
   await base('Early Adopters').create([

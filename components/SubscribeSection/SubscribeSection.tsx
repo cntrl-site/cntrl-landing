@@ -10,7 +10,7 @@ interface Props {
 }
 
 const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL ||
-  'https://glistening-froyo-032078.netlify.app/.netlify/functions/subscribe';
+  'https://functions.cntrl.site/.netlify/functions/subscribe';
 
 export const SubscribeSection: FC<Props> = ({ layouts }) => {
   const year = new Date().getFullYear();
@@ -47,14 +47,16 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
             <input
               type="text"
               name="email"
-              value="Your e-mail"
+              placeholder="Your e-mail"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="input"
             />
             <input
               type="text"
               name="portfolio"
-              value="Website / Portfolio"
+              placeholder="Website / Portfolio"
+              value={portfolio}
               onChange={(e) => setPortfolio(e.target.value)}
               className="input"
             />
