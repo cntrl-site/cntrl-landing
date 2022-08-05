@@ -1,4 +1,4 @@
-import React, { FC, FormEventHandler, useState } from 'react';
+import React, { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
 import logo from '../../public/cntrl-img.svg';
 import { TLayout } from '@cntrl-site/core';
 import { LayoutStyle } from '../LayoutStyle/LayoutStyle';
@@ -16,16 +16,42 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
   const year = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const [portfolio, setPortfolio] = useState('');
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const [isValid, setIsValid] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const validateEmail = (email: string): boolean => {
+    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return regex.test(email);
+  };
+  const validatePortfolio = (portfolio: string): boolean => {
+    return portfolio.length > 2;
+  };
+  const validate = ({ email, portfolio }: Record<'email' | 'portfolio', string>): boolean => {
+    const isValid = validateEmail(email) && validatePortfolio(portfolio);
+    setIsValid(isValid || false);
+    return isValid;
+  };
+  const onEmailChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    validate({ email: e.target.value, portfolio });
+    setEmail(e.target.value);
+  };
+
+  const onPortfolioChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    validate({ portfolio: e.target.value, email });
+    setPortfolio(e.target.value);
+  };
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    fetch(submitUrl, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, portfolio })
-    });
+    if (validate({ email, portfolio })) {
+      setIsSending(true);
+      await fetch(submitUrl, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, portfolio })
+      });
+    }
   };
   return (
     <>
@@ -40,13 +66,13 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           <div className="subscribe-text">
             We’re looking for <span className="strikethrough">investor</span> creative guinea pigs to try our Alpha release.
           </div>
-          <form onSubmit={onSubmit} className="form">
+          <form onSubmit={onSubmit} className="form" autoComplete="off">
             <input
-              type="text"
+              type="email"
               name="email"
               value={email}
               placeholder="Your e-mail"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={onEmailChange}
               className="input"
             />
             <input
@@ -54,10 +80,16 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
               name="portfolio"
               value={portfolio}
               placeholder="Website / Portfolio"
-              onChange={(e) => setPortfolio(e.target.value)}
+              onChange={onPortfolioChange}
               className="input"
             />
-            <button type="submit" className="submit">Send</button>
+            <button
+              type="submit"
+              className="submit"
+              disabled={!isValid}
+            >
+              {isSending ? 'Sending...' : 'Send'}
+            </button>
           </form>
           <div className="form-bottom-wrapper">
             <a href="mailto:hi@cntrl.site" className="email">hi@cntrl.site</a>
@@ -169,16 +201,30 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         }
         input {
           all: unset;
+          color: #fff;
         }
         input:focus::placeholder {
-          color: transparent;
+          color: #2d2d2d;
         }
-        button {
+        input::placeholder {
+          color: #1EE65B;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+          //transition: background-color 5000s ease-in-out 0s;
+          -webkit-text-fill-color: #fff !important;
+        }
+        .submit {
           background-color: unset;
           border: unset;
           padding: unset;
           cursor: pointer;
           display: inline-flex;
+          color: #1EE65B;
+        }
+        .submit[disabled] {
           color: #2D2D2D;
         }
       `}</style>
