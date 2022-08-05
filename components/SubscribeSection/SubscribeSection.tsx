@@ -44,16 +44,16 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
             <input
               type="text"
               name="email"
-              placeholder="Your e-mail"
               value={email}
+              placeholder="Your e-mail"
               onChange={(e) => setEmail(e.target.value)}
               className="input"
             />
             <input
               type="text"
               name="portfolio"
-              placeholder="Website / Portfolio"
               value={portfolio}
+              placeholder="Website / Portfolio"
               onChange={(e) => setPortfolio(e.target.value)}
               className="input"
             />
@@ -122,15 +122,17 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         }
         .form-bottom-wrapper {
           margin-top: ${getVw(210, exemplary)};
+          margin-bottom: ${getVw(36, exemplary)}
         }
         .form-bottom-text {
           margin-right: ${getVw(56, exemplary)};
         }
       `}</LayoutStyle>
       <style jsx>{`
-        .strikethrough {
-          text-decoration: line-through;
-          color: #838383;
+        .subscribe-form {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
         .subscribe-text {
           font-family: 'AeonikPro';
@@ -139,6 +141,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         }
         .email {
           color: #1EE65B;
+          align-self: center;
         }
         .subscribe-hero {
           background-color: #1EE65B;
@@ -157,14 +160,24 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         }
         .form-bottom-text {
           color: #FFFFFF;
+          display: flex;
+          align-items: center;
+        }
+        .strikethrough {
+          text-decoration: line-through;
+          color: #838383;
         }
         input {
           all: unset;
+        }
+        input:focus::placeholder {
+          color: transparent;
         }
         button {
           background-color: unset;
           border: unset;
           padding: unset;
+          cursor: pointer;
           display: inline-flex;
           color: #2D2D2D;
         }
