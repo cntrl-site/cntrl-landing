@@ -25,7 +25,7 @@ export const handler: Handler = async (event) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin": "https://cntrl.site",
-        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTION"
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS"
       },
       body: JSON.stringify({
         message: 'success'
@@ -36,7 +36,7 @@ export const handler: Handler = async (event) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin": "https://cntrl.site",
-        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTION"
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS"
       }
     };
   }
