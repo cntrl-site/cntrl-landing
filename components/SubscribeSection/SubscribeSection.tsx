@@ -122,14 +122,17 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           flex-direction: column-reverse;
           justify-content: space-between;
           position: relative;
-          // height: 100vh
+          height: 100vh
         }
         .subscribe-hero {
           padding-left: ${getVw(16, exemplary)}
         } 
+        .subscribe-form {
+          flex: 1 auto;
+        }
         .subscribe-text {
           font-size: ${getVw(48, exemplary)};
-          margin-top: ${getVw(51, exemplary)};
+          margin-top: ${getVw(41, exemplary)};
           padding-left: ${getVw(16, exemplary)}
         } 
         .hero {
@@ -154,8 +157,8 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           position: absolute;
         } 
         .form {
-          margin-top: ${getVw(180, exemplary)};
-          margin-bottom: ${getVw(112, exemplary)};
+          // margin-top: ${getVw(180, exemplary)};
+          // margin-bottom: ${getVw(112, exemplary)};
           margin-right: ${getVw(14, exemplary)};
           padding-left: ${getVw(16, exemplary)}
         }
