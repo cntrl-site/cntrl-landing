@@ -44,16 +44,13 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
     e.preventDefault();
     if (validate({ email, portfolio })) {
       setIsSending(true);
-      // await fetch(submitUrl, {
-      //   method: 'POST',
-      //   mode: 'cors',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify({ email, portfolio })
-      // });
-      await new Promise<void>((resolve, reject) => {
-        setTimeout(() => resolve(), 1000);
+      await fetch(submitUrl, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, portfolio })
       });
       setIsSending(false);
       setIsSubmited(true);
