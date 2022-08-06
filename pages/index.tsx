@@ -1,12 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { TArticle, TProject, TPage } from '@cntrl-site/core';
 import { CntrlClient } from '@cntrl-site/sdk';
-import { Page } from '@cntrl-site/sdk-nextjs';
 import { Redirect } from '../components/Redirect';
-import { SubscribeSection } from '../components/SubscribeSection/SubscribeSection';
-import { Header } from '../components/Header/Header';
-import { late } from 'zod';
-import { LayoutStyle } from '../components/LayoutStyle/LayoutStyle';
 import { HomePage } from '../components/HomePage/HomePage';
 
 const client = new CntrlClient(process.env.CNTRL_PROJECT_ID!, process.env.CNTRL_API_URL!);
