@@ -67,7 +67,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         </div>
         <div className="subscribe-form">
           <div className="subscribe-text">
-            We’re looking for <span className="strikethrough">investor</span> creative guinea pigs to try our Alpha release.
+            We’re looking for <span className="strikethrough">investors</span> creative guinea pigs to try our Alpha release.
           </div>
           {isSubmit
             ?
@@ -104,7 +104,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           <div className="form-bottom-wrapper">
             <a href="mailto:hi@cntrl.site" className="email">hi@cntrl.site</a>
             <div className="form-bottom-text">
-              Build in <img src={logoIcon.src} className="icon" />
+              Built in <img src={logoIcon.src} className="icon" />
             </div>
           </div>
         </div>
