@@ -108,7 +108,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           <div className="form-bottom-wrapper">
             <a href="mailto:hi@cntrl.site" className="email">hi@cntrl.site</a>
             <div className="form-bottom-text">
-              Built in <img src={logoIcon.src} className="icon" />
+              Built in <img src={logoIcon.src} className="icon" alt="CNTRL Logo" />
             </div>
           </div>
         </div>
@@ -387,6 +387,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         }
         .submit {
           font-family: 'AeonikPro';
+          font-weight: 400;
           background-color: unset;
           border: unset;
           padding: unset;
