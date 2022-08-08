@@ -136,7 +136,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           padding-left: ${getVw(16, exemplary)}
         } 
         .hero {
-          width: ${getVw(385, exemplary)};
+          display: none
         }
         .rights {
           margin-bottom: ${getVw(27, exemplary)};
@@ -144,8 +144,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         }
         .email {
           padding-left: ${getVw(16, exemplary)};
-          bottom: ${getVw(157, exemplary)};
-          position: absolute;
+          margin-bottom: ${getVw(110, exemplary)};
         }
         .icon {
           width: ${getVw(24, exemplary)};
@@ -157,8 +156,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           position: absolute;
         } 
         .form {
-          // margin-top: ${getVw(180, exemplary)};
-          // margin-bottom: ${getVw(112, exemplary)};
           margin-right: ${getVw(14, exemplary)};
           padding-left: ${getVw(16, exemplary)}
         }
@@ -296,7 +293,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         }
         .form-bottom-wrapper {
           margin-top: ${getVw(210, exemplary)};
-          margin-bottom: ${getVw(36, exemplary)}
+          margin-bottom: ${getVw(33, exemplary)}
         }
         .form-bottom-text {
           margin-right: ${getVw(56, exemplary)};
@@ -304,7 +301,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         .input {
           font-size: ${getVw(32, exemplary)};
           padding-bottom: ${getVw(11.5, exemplary)}!important;
-          padding-top: ${getVw(7.5, exemplary)}!important;
+          padding-top: ${getVw(9.5, exemplary)}!important;
           border-width: ${getVw(2, exemplary)};
         }
         .submitted {
@@ -330,9 +327,11 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           font-weight: 400;
         }
         .rights {
+          font-family: 'AeonikPro';
           color: #1EE65B;
         }
         .email {
+          font-family: 'AeonikPro';
           color: #1EE65B;
           align-self: center;
         }
@@ -351,6 +350,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           justify-content: space-between;
         }
         .form-bottom-text {
+          font-family: 'AeonikPro';
           color: #FFFFFF;
           display: flex;
           align-items: center;
@@ -360,6 +360,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           color: #838383;
         }
         input {
+          font-family: 'AeonikPro';
           outline: none;
           border-radius: unset;
           border-top-width: 0; 
@@ -382,10 +383,10 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         input:-webkit-autofill:hover, 
         input:-webkit-autofill:focus, 
         input:-webkit-autofill:active{
-          //transition: background-color 5000s ease-in-out 0s;
           -webkit-text-fill-color: #fff !important;
         }
         .submit {
+          font-family: 'AeonikPro';
           background-color: unset;
           border: unset;
           padding: unset;
