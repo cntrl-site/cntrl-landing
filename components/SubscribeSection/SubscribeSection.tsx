@@ -11,13 +11,18 @@ interface Props {
 
 const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL!;
 
+enum SubmitStatus {
+  Idle = 'idle',
+  InProgress = 'in-progress',
+  Finished = 'finished'
+}
+
 export const SubscribeSection: FC<Props> = ({ layouts }) => {
   const year = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const [isValid, setIsValid] = useState(false);
-  const [isSending, setIsSending] = useState(false);
-  const [isSubmit, setIsSubmited] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(SubmitStatus.Idle);
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -43,7 +48,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (validate({ email, portfolio })) {
-      setIsSending(true);
+      setSubmitStatus(SubmitStatus.InProgress);
       await fetch(submitUrl, {
         method: 'POST',
         mode: 'cors',
@@ -52,8 +57,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         },
         body: JSON.stringify({ email, portfolio })
       });
-      setIsSending(false);
-      setIsSubmited(true);
+      setSubmitStatus(SubmitStatus.Finished);
     }
   };
   return (
@@ -69,7 +73,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           <div className="subscribe-text">
             We’re looking for <span className="strikethrough">investors</span> creative guinea pigs to try our Alpha release.
           </div>
-          {isSubmit
+          {submitStatus === SubmitStatus.Finished
             ?
             <div className="submitted">
               Nice. Look for a white dove to deliver your invite.
@@ -95,9 +99,9 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
               <button
                 type="submit"
                 className="submit"
-                disabled={!isValid}
+                disabled={!isValid || submitStatus === SubmitStatus.InProgress}
               >
-                {isSending ? 'Sending...' : 'Send'}
+                {submitStatus === SubmitStatus.InProgress ? 'Sending...' : 'Send'}
               </button>
             </form>
           }
