@@ -1,6 +1,5 @@
-import type { GetStaticProps, NextPage } from 'next'
-import { TArticle, TProject, TPage } from '@cntrl-site/core';
-import { CntrlClient } from '@cntrl-site/sdk';
+import type { GetStaticProps, NextPage } from 'next';
+import { CntrlClient, TArticle, TProject, TPage } from '@cntrl-site/sdk-nextjs';
 import { Redirect } from '../components/Redirect';
 import { HomePage } from '../components/HomePage/HomePage';
 

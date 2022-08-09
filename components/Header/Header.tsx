@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { LayoutStyle } from '../LayoutStyle/LayoutStyle';
-import { TLayout } from '@cntrl-site/core';
+import { LayoutStyle, TLayout } from '@cntrl-site/sdk-nextjs';
 import logo from '../../public/cntrl-img.svg';
 import { getVw } from '../HomePage/HomePage';
 

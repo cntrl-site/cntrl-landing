@@ -1,7 +1,6 @@
 import React, { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
+import { LayoutStyle, TLayout } from '@cntrl-site/sdk-nextjs';
 import logo from '../../public/cntrl-green.svg';
-import { TLayout } from '@cntrl-site/core';
-import { LayoutStyle } from '../LayoutStyle/LayoutStyle';
 import { getVw } from '../HomePage/HomePage';
 import logoIcon from '../../public/icon-large.png';
 

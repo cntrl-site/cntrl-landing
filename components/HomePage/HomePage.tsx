@@ -1,10 +1,7 @@
 import React, { FC } from 'react';
+import { CntrlClient, LayoutStyle, Page, TArticle, TLayout, TPage, TProject } from '@cntrl-site/sdk-nextjs';
 import { Header } from '../Header/Header';
 import { SubscribeSection } from '../SubscribeSection/SubscribeSection';
-import { LayoutStyle } from '../LayoutStyle/LayoutStyle';
-import { TArticle, TLayout, TPage, TProject } from '@cntrl-site/core';
-import { Page } from '@cntrl-site/sdk-nextjs';
-import { CntrlClient } from '@cntrl-site/sdk';
 
 interface Props {
   project: TProject;
