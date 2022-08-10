@@ -250,6 +250,8 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
       >{({exemplary}) => `
         .subscribe {
           min-height: ${getVw(800, exemplary)};
+          position: absolute;
+          z-index: 101;
         }
         .subscribe-hero,
         .subscribe-form {
