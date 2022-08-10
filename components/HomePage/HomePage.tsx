@@ -85,6 +85,10 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
           font-weight: 500;
           letter-spacing: -1px;
           cursor: pointer;
+          transition: 0.2s ease-in;
+        }
+        .button:hover {
+          color: #1EE65B;
         }
       `}</style>
     </>
