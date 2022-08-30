@@ -24,20 +24,18 @@ export const Header: FC<Props> = ({ layouts, children }) => {
       >{({ exemplary }) => `
         .header {
           // padding-top: ${getVw(20, exemplary)};
-          height: ${getVw(104, exemplary)};
+          height: ${getVw(80, exemplary)};
           background-color: #FFFFFF;
           align-items: center;
         }
         .button-wrapper {
           margin-right: ${getVw(16, exemplary)};
-          margin-bottom: ${getVw(-5, exemplary)};
+          height: 100%;
+          line-height: ${getVw(80, exemplary)};
         }
         .logo {
           height: ${getVw(20, exemplary)};
           margin-left: ${getVw(16, exemplary)};
-        }
-        .button {
-          margin-bottom: ${getVw(42, exemplary)};
         }
       `}</LayoutStyle>
 
