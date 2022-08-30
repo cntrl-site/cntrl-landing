@@ -121,7 +121,8 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           flex-direction: column-reverse;
           justify-content: space-between;
           position: relative;
-          height: 100vh
+          height: 100vh;
+          z-index: 101;
         }
         .subscribe-hero {
           padding-left: ${getVw(16, exemplary)}

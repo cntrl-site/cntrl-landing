@@ -23,7 +23,10 @@ export const Header: FC<Props> = ({ layouts, children }) => {
         layoutId={layouts[0].id}
       >{({ exemplary }) => `
         .header {
-          margin-top: ${getVw(20, exemplary)};
+          // padding-top: ${getVw(20, exemplary)};
+          height: ${getVw(104, exemplary)};
+          background-color: #FFFFFF;
+          align-items: center;
         }
         .button-wrapper {
           margin-right: ${getVw(16, exemplary)};
@@ -32,6 +35,9 @@ export const Header: FC<Props> = ({ layouts, children }) => {
         .logo {
           height: ${getVw(20, exemplary)};
           margin-left: ${getVw(16, exemplary)};
+        }
+        .button {
+          margin-bottom: ${getVw(42, exemplary)};
         }
       `}</LayoutStyle>
 
