@@ -10,7 +10,7 @@
     "export": "npm run build && next export -o _static"
   },
   "dependencies": {
-    "@cntrl-site/sdk-nextjs": "^0.1.7",
+    "@cntrl-site/sdk-nextjs": "^0.1.8",
     "airtable": "^0.11.4",
     "next": "^12.2.3",
     "react": "^18.2.0",
