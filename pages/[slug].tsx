@@ -1,5 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import { CntrlClient, TArticle, TProject, TPage, Page } from '@cntrl-site/sdk-nextjs';
+import { LayoutsContext } from '../context/LayoutsContext';
 
 const client = new CntrlClient(
   process.env.CNTRL_PROJECT_ID!,
@@ -14,12 +15,15 @@ interface Props {
 
 const CntrlPage: NextPage<Props> = (props) => {
   const meta = CntrlClient.getPageMeta(props.project.meta, props.page.meta!);
+  const layouts = props.project.layouts.sort((a, b) => a.startsWith - b.startsWith);
   return (
-    <Page
-      project={props.project}
-      article={props.article}
-      meta={meta}
-    />
+    <LayoutsContext.Provider value={layouts}>
+      <Page
+        project={props.project}
+        article={props.article}
+        meta={meta}
+      />
+    </LayoutsContext.Provider>
   );
 }
 

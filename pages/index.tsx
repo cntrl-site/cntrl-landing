@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import { CntrlClient, TArticle, TProject, TPage } from '@cntrl-site/sdk-nextjs';
 import { Redirect } from '../components/Redirect';
 import { HomePage } from '../components/HomePage/HomePage';
+import { LayoutsContext } from '../context/LayoutsContext';
 
 const client = new CntrlClient(process.env.CNTRL_PROJECT_ID!, process.env.CNTRL_API_URL!);
 
@@ -15,13 +16,16 @@ const Index: NextPage<Props> = (props) => {
   if (!props.page || !props.article) {
     return <Redirect />;
   }
+  const layouts = props.project.layouts.sort((a, b) => a.startsWith - b.startsWith);
 
   return (
-    <HomePage
-      project={props.project}
-      article={props.article}
-      page={props.page}
-    />
+    <LayoutsContext.Provider value={layouts}>
+      <HomePage
+        project={props.project}
+        article={props.article}
+        page={props.page}
+      />
+    </LayoutsContext.Provider>
   );
 }
 
