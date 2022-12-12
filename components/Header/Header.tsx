@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
-import { LayoutStyle, TLayout } from '@cntrl-site/sdk-nextjs';
+import { LayoutStyle } from '@cntrl-site/sdk-nextjs';
 import logo from '../../public/cntrl-img.svg';
 import { getVw } from '../HomePage/HomePage';
+import { useLayouts } from '../../context/useLayouts';
 
 interface Props {
   children?: React.ReactNode;
-  layouts: TLayout[];
 }
 
-export const Header: FC<Props> = ({ layouts, children }) => {
+export const Header: FC<Props> = ({ children }) => {
+  const layouts = useLayouts();
   return (
     <>
       <div className='header'>

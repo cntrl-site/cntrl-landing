@@ -16,11 +16,12 @@ const Index: NextPage<Props> = (props) => {
     return <Redirect />;
   }
 
-  // TODO return already sorted layouts
-  const layouts = props.project.layouts.sort((a, b) => a.startsWith - b.startsWith);
-
   return (
-   <HomePage project={props.project} article={props.article} page={props.page} layouts={layouts} />
+    <HomePage
+      project={props.project}
+      article={props.article}
+      page={props.page}
+    />
   );
 }
 

@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
-import { CntrlClient, LayoutStyle, Page, TArticle, TLayout, TPage, TProject } from '@cntrl-site/sdk-nextjs';
+import { CntrlClient, LayoutStyle, Page, TArticle, TPage, TProject } from '@cntrl-site/sdk-nextjs';
 import { Header } from '../Header/Header';
-import { SubscribeSection } from '../SubscribeSection/SubscribeSection';
+import { useLayouts } from '../../context/useLayouts';
 
 interface Props {
   project: TProject;
   article: TArticle;
   page: TPage;
-  layouts: TLayout[];
 }
 
-export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
+export const HomePage: FC<Props> = ({ project, article, page }) => {
   const meta = CntrlClient.getPageMeta(project.meta, page?.meta!);
+  const layouts = useLayouts();
 
   const scrollTo = (elId: string) => {
     const el = document.querySelector(`#${elId}`);
@@ -23,7 +23,7 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
 
   return (
     <>
-      <Header layouts={layouts}>
+      <Header>
         <a className="button" onClick={() => scrollTo('subscribe')}>Request an invite</a>
       </Header>
       <Page
@@ -31,7 +31,6 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
         article={article}
         meta={meta}
       />
-      <SubscribeSection layouts={layouts} />
       <LayoutStyle
         id={`homePage-${layouts[0].id}`}
         layouts={layouts}
@@ -39,12 +38,6 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
       >{({ exemplary }) => `
         .button {
           font-size: ${getVw(18, exemplary)};
-          // border-radius: ${getVw(19, exemplary)};
-          // padding-left: ${getVw(40.5, exemplary)};
-          // padding-right: ${getVw(40.5, exemplary)};
-          // padding-top: ${getVw(5, exemplary)}; 
-          // padding-bottom: ${getVw(5, exemplary)};
-          // height: ${getVw(38, exemplary)}
         }
       `}</LayoutStyle>
       <LayoutStyle
@@ -54,12 +47,6 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
       >{({ exemplary }) => `
         .button {
           font-size: ${getVw(18, exemplary)};
-          // border-radius: ${getVw(19, exemplary)};
-          // padding-left: ${getVw(40.5, exemplary)};
-          // padding-right: ${getVw(40.5, exemplary)};
-          // padding-top: ${getVw(5, exemplary)}; 
-          // padding-bottom: ${getVw(5, exemplary)};
-          // height: ${getVw(38, exemplary)}
         }
       `}</LayoutStyle>
       <LayoutStyle
@@ -69,12 +56,6 @@ export const HomePage: FC<Props> = ({ project, article, page, layouts }) => {
       >{({ exemplary }) => `
         .button {
           font-size: ${getVw(18, exemplary)};
-          // border-radius: ${getVw(19, exemplary)};
-          // padding-left: ${getVw(40.5, exemplary)};
-          // padding-right: ${getVw(40.5, exemplary)};
-          // padding-top: ${getVw(5, exemplary)}; 
-          // padding-bottom: ${getVw(5, exemplary)};
-          // height: ${getVw(38, exemplary)}
         }
       `}</LayoutStyle>
       <style jsx>{`

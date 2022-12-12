@@ -1,12 +1,7 @@
 import React, { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
-import { LayoutStyle, TLayout } from '@cntrl-site/sdk-nextjs';
-import logo from '../../public/cntrl-green.svg';
-import { getVw } from '../HomePage/HomePage';
-import logoIcon from '../../public/icon-large.png';
-
-interface Props {
-  layouts: TLayout[];
-}
+import { LayoutStyle } from '@cntrl-site/sdk-nextjs';
+import { getVw } from './HomePage/HomePage';
+import { useLayouts } from '../context/useLayouts';
 
 const submitUrl = process.env.NEXT_PUBLIC_AIRTABLE_SUBMIT_URL!;
 
@@ -16,8 +11,8 @@ enum SubmitStatus {
   Finished = 'finished'
 }
 
-export const SubscribeSection: FC<Props> = ({ layouts }) => {
-  const year = new Date().getFullYear();
+export const SubscribeForm: FC = () => {
+  const layouts = useLayouts();
   const [email, setEmail] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const [isValid, setIsValid] = useState(false);
@@ -61,17 +56,8 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
   };
   return (
     <>
-      <div className="subscribe" id="subscribe">
-        <div className="subscribe-hero">
-          <img src={logo.src} alt="CNTRL Logo" className="hero" />
-          <div className="rights">
-            CNTRL {year} © All rights reserved
-          </div>
-        </div>
+      <div id="subscribe">
         <div className="subscribe-form">
-          <div className="subscribe-text">
-            We’re looking for <span className="strikethrough">investors</span> creative guinea pigs to try our Alpha release.
-          </div>
           {submitStatus === SubmitStatus.Finished
             ?
             <div className="submitted">
@@ -104,12 +90,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
               </button>
             </form>
           }
-          <div className="form-bottom-wrapper">
-            <a href="mailto:hi@cntrl.site" className="email">hi@cntrl.site</a>
-            <div className="form-bottom-text">
-              Built in <img src={logoIcon.src} className="icon" alt="CNTRL Logo" />
-            </div>
-          </div>
         </div>
       </div>
       <LayoutStyle
@@ -117,48 +97,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         layouts={layouts}
         layoutId={layouts[0].id}
       >{({exemplary}) => `
-        .subscribe {
-          flex-direction: column-reverse;
-          justify-content: space-between;
-          position: relative;
-          height: 100vh;
-          z-index: 101;
-        }
-        .subscribe-hero {
-          padding-left: ${getVw(16, exemplary)}
-        } 
-        .subscribe-form {
-          flex: 1 auto;
-        }
-        .subscribe-text {
-          font-size: ${getVw(48, exemplary)};
-          margin-top: ${getVw(41, exemplary)};
-          padding-left: ${getVw(16, exemplary)}
-        } 
-        .hero {
-          display: none
-        }
-        .rights {
-          margin-bottom: ${getVw(27, exemplary)};
-          margin-top: ${getVw(17, exemplary)}
-        }
-        .email {
-          padding-left: ${getVw(16, exemplary)};
-          margin-bottom: ${getVw(110, exemplary)};
-        }
-        .icon {
-          width: ${getVw(24, exemplary)};
-          margin-left: ${getVw(11, exemplary)};
-        }
-        .form-bottom-text {
-          bottom: ${getVw(25, exemplary)};
-          right: ${getVw(14, exemplary)};
-          position: absolute;
-        } 
-        .form {
-          margin-right: ${getVw(14, exemplary)};
-          padding-left: ${getVw(16, exemplary)}
-        }
         .input {
           font-size: ${getVw(32, exemplary)};
           border-width: ${getVw(1, exemplary)};
@@ -172,8 +110,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         .submitted {
           font-size: ${getVw(32, exemplary)};
           line-height: ${getVw(40, exemplary)};
-          margin-right: ${getVw(14, exemplary)};
-          margin-left: ${getVw(16, exemplary)};
         }
       `}
       </LayoutStyle>
@@ -182,37 +118,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         layouts={layouts}
         layoutId={layouts[1].id}
       >{({exemplary}) => `
-        .subscribe {
-          min-height: ${getVw(800, exemplary)};
-        }
-        .subscribe-hero,
-        .subscribe-form {
-          flex: 1 1 50%;
-        }
-        .hero {
-          width: ${getVw(183, exemplary)};
-          margin-top: ${getVw(53, exemplary)};
-          margin-left: ${getVw(16, exemplary)}
-        }
-        .icon {
-          width: ${getVw(24, exemplary)};
-          margin-left: ${getVw(11, exemplary)};
-        }
-        .rights {
-          margin-left: ${getVw(16, exemplary)};
-          margin-bottom: ${getVw(36, exemplary)}
-        }
-        .subscribe-text {
-          font-size: ${getVw(40, exemplary)};
-          line-height: ${getVw(50, exemplary)};
-          margin-top: ${getVw(53, exemplary)};
-          margin-right: ${getVw(20, exemplary)};
-          margin-left: ${getVw(20, exemplary)}
-        }
         .form {
-          margin-top: ${getVw(81, exemplary)};
-          margin-left: ${getVw(20, exemplary)};
-          margin-right: ${getVw(20, exemplary)};
           font-size: ${getVw(32, exemplary)};
           line-height: ${getVw(40, exemplary)};
         }
@@ -220,16 +126,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           font-size: ${getVw(28, exemplary)};
           line-height: ${getVw(35, exemplary)};
           padding-top: ${getVw(7.5, exemplary)}!important;
-        }
-        .email {
-          margin-left: ${getVw(20, exemplary)};
-        }
-        .form-bottom-wrapper {
-          margin-top: ${getVw(210, exemplary)};
-          margin-bottom: ${getVw(36, exemplary)}
-        }
-        .form-bottom-text {
-          margin-right: ${getVw(20, exemplary)};
         }
         .input {
           font-size: ${getVw(32, exemplary)};
@@ -240,8 +136,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         .submitted {
           font-size: ${getVw(32, exemplary)};
           line-height: ${getVw(40, exemplary)};
-          margin-right: ${getVw(20, exemplary)};
-          margin-left: ${getVw(20, exemplary)};
         }
       `}</LayoutStyle>
       <LayoutStyle
@@ -249,39 +143,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         layouts={layouts}
         layoutId={layouts[2].id}
       >{({exemplary}) => `
-        .subscribe {
-          min-height: ${getVw(800, exemplary)};
-          position: absolute;
-          z-index: 101;
-        }
-        .subscribe-hero,
-        .subscribe-form {
-          flex: 1 0 50%;
-        }
-        .hero {
-          width: ${getVw(263, exemplary)};
-          margin-top: ${getVw(53, exemplary)};
-          margin-left: ${getVw(56, exemplary)}
-        }
-        .icon {
-          width: ${getVw(24, exemplary)};
-          margin-left: ${getVw(11, exemplary)};
-        }
-        .rights {
-          margin-left: ${getVw(56, exemplary)};
-          margin-bottom: ${getVw(36, exemplary)}
-        }
-        .subscribe-text {
-          font-size: ${getVw(48, exemplary)};
-          line-height: ${getVw(60, exemplary)};
-          margin-top: ${getVw(53, exemplary)};
-          margin-right: ${getVw(159, exemplary)};
-          margin-left: ${getVw(40, exemplary)}
-        }
         .form {
-          margin-top: ${getVw(81, exemplary)};
-          margin-left: ${getVw(40, exemplary)};
-          margin-right: ${getVw(159, exemplary)};
           font-size: ${getVw(32, exemplary)};
           line-height: ${getVw(40, exemplary)};
         }
@@ -290,15 +152,9 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           line-height: ${getVw(40, exemplary)};
           padding-top: ${getVw(7.5, exemplary)}!important;
         }
-        .email {
-          margin-left: ${getVw(40, exemplary)};
-        }
         .form-bottom-wrapper {
           margin-top: ${getVw(210, exemplary)};
           margin-bottom: ${getVw(33, exemplary)}
-        }
-        .form-bottom-text {
-          margin-right: ${getVw(56, exemplary)};
         }
         .input {
           font-size: ${getVw(32, exemplary)};
@@ -323,25 +179,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
           flex-direction: column;
           justify-content: space-between;
         }
-        .subscribe-text {
-          font-family: 'AeonikPro';
-          color: #FFFFFF;
-          font-weight: 400;
-        }
-        .rights {
-          font-family: 'AeonikPro';
-          color: #1EE65B;
-        }
-        .email {
-          font-family: 'AeonikPro';
-          color: #1EE65B;
-          align-self: center;
-        }
-        .subscribe-hero {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
         .form {
           display: flex;
           flex-direction: column;
@@ -350,16 +187,6 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         .form-bottom-wrapper {
           display: flex;
           justify-content: space-between;
-        }
-        .form-bottom-text {
-          font-family: 'AeonikPro';
-          color: #FFFFFF;
-          display: flex;
-          align-items: center;
-        }
-        .strikethrough {
-          text-decoration: line-through;
-          color: #838383;
         }
         input {
           font-family: 'AeonikPro';
@@ -384,7 +211,7 @@ export const SubscribeSection: FC<Props> = ({ layouts }) => {
         input:-webkit-autofill,
         input:-webkit-autofill:hover, 
         input:-webkit-autofill:focus, 
-        input:-webkit-autofill:active{
+        input:-webkit-autofill:active {
           -webkit-text-fill-color: #fff !important;
         }
         .submit {
