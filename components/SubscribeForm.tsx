@@ -152,10 +152,6 @@ export const SubscribeForm: FC = () => {
           line-height: ${getVw(40, exemplary)};
           padding-top: ${getVw(7.5, exemplary)}!important;
         }
-        .form-bottom-wrapper {
-          margin-top: ${getVw(210, exemplary)};
-          margin-bottom: ${getVw(33, exemplary)}
-        }
         .input {
           font-size: ${getVw(32, exemplary)};
           padding-bottom: ${getVw(11.5, exemplary)}!important;
@@ -165,8 +161,6 @@ export const SubscribeForm: FC = () => {
         .submitted {
           font-size: ${getVw(32, exemplary)};
           line-height: ${getVw(40, exemplary)};
-          margin-right: ${getVw(159, exemplary)};
-          margin-left: ${getVw(40, exemplary)};
         }
       `}</LayoutStyle>
       <style jsx>{`
@@ -183,10 +177,6 @@ export const SubscribeForm: FC = () => {
           display: flex;
           flex-direction: column;
           color: #1EE65B;
-        }
-        .form-bottom-wrapper {
-          display: flex;
-          justify-content: space-between;
         }
         input {
           font-family: 'AeonikPro';
